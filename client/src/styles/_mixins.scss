@@ -1,0 +1,87 @@
+@import 'variables';
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin card-container {
+  margin: 0;
+  padding: 1em;
+  border-radius: $border-radius;
+  background-color: $bg-color;
+  overflow: auto;
+  box-sizing: border-box;
+  border: 1px solid $border-color;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  transition: $transition-normal;
+  @include flex-column;
+  height: 100%;
+}
+
+@mixin border-glow-animation {
+  @keyframes border-glow {
+    0% {
+      border-color: $border-color;
+    }
+    50% {
+      border-color: $primary-color;
+      box-shadow: 0 0 10px rgba(100, 108, 255, 0.5);
+    }
+    100% {
+      border-color: $border-color;
+    }
+  }
+
+  &:hover {
+    animation: border-glow 1.5s infinite;
+  }
+}
+
+@mixin icon-circle {
+  @include flex-center;
+  background-color: $bg-color;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+  aspect-ratio: 1/1;
+}
+
+@mixin time-of-day-theme($start-color, $end-color, $text-color) {
+  background: linear-gradient(to right, $start-color, $end-color);
+  color: $text-color;
+  border-color: $start-color;
+}
+
+@mixin animated-cursor($color: #fff) {
+  @keyframes cursor-blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+  
+  display: inline-block;
+  animation: cursor-blink 1s infinite;
+}
+
+@mixin responsive-grid {
+  @media (max-width: $breakpoint-tablet) {
+    grid-template-areas:
+      "about"
+      "datetime"
+      "repos"
+      "code";
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr 1fr;
+    height: auto;
+    min-height: 100vh;
+    overflow-y: auto;
+    gap: $spacing-md;
+  }
+}
