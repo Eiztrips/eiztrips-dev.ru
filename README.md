@@ -1,6 +1,5 @@
 # eiztrips-dev.ru
 
-  
 
 ## Особенности
 
@@ -108,7 +107,32 @@ $ npm start       # запуск скомпилированного кода
 
 ```
 
-  
+### Запуск сервера в Docker
+
+```
+# Перейти в директорию сервера
+$ cd server
+
+# Создать Docker образ
+$ docker build -t eiztrips-server .
+
+# Запустить контейнер
+$ docker run -d -p 5000:5000 --name eiztrips-backend eiztrips-server
+
+# Посмотреть логи
+$ docker logs eiztrips-backend
+
+# Остановить контейнер
+$ docker stop eiztrips-backend
+```
+
+Для запуска с переменными окружения:
+
+```
+$ docker run -d -p 5000:5000 \
+  -e GIPHY_API_KEY=your_api_key \
+  --name eiztrips-backend eiztrips-server
+```
 
 Клиент будет доступен по адресу http://localhost:5173/, сервер API - http://localhost:5000.
 

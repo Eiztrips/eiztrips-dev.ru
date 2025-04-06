@@ -1,6 +1,7 @@
 export const fetchRandomCatGif = async (): Promise<string> => {
   try {
-    const response = await fetch('http://localhost:5000/api/random-cat-gif');
+    // Using a relative URL that will automatically match the site's protocol
+    const response = await fetch('/api/random-cat-gif');
     if (!response.ok) {
       throw new Error('Failed to fetch cat gif');
     }

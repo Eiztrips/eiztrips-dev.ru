@@ -1,13 +1,16 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Express server with TypeScript",
+  "main": "dist/server.js",
   "scripts": {
     "start": "node dist/server.js",
     "dev": "ts-node server.ts",
     "build": "tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "docker:build": "docker build -t server .",
+    "docker:run": "docker run -p 5000:5000 server",
+    "docker:compose": "docker-compose up",
+    "docker:compose:build": "docker-compose up --build"
   },
   "keywords": [],
   "author": "",
@@ -22,7 +25,6 @@
     "jsonwebtoken": "^9.0.2",
     "jwt-decode": "^4.0.0",
     "node-fetch": "^2.7.0",
-    "server": "file:",
     "sqlite3": "^5.1.7",
     "telegraf": "^4.16.3",
     "uuid": "^11.0.2"
