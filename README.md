@@ -35,13 +35,15 @@
 
 ### Сервер
 
-- Node.js
+- Spring Boot 3.4.4
 
-- Express
+- Kotlin 1.9.25
 
-- TypeScript
+- Java 21
 
-- Axios (для работы с API)
+- Gradle
+
+- Docker
 
   
 
@@ -97,13 +99,11 @@ $ npm run build   # сборка для продакшена
 
 $ cd server
 
-$ npm install
+Запуск через Gradle
+$ ./gradlew bootRun
 
-$ npm run dev     # режим разработки с ts-node
-
-$ npm run build   # компиляция TypeScript
-
-$ npm start       # запуск скомпилированного кода
+Сб��рка проекта
+$ ./gradlew build
 
 ```
 
