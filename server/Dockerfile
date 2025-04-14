@@ -1,12 +1,15 @@
+FROM node:18-alpine
 
-FROM gradle:7.6-jdk17 AS build
 WORKDIR /app
+
+COPY package*.json ./
+
+RUN npm install
+
 COPY . .
-RUN gradle build --no-daemon -x test
 
+RUN npx tsc
 
-FROM openjdk:21-slim
-WORKDIR /app
-COPY --from=build /app/build/libs/*.jar app.jar
-EXPOSE 8080
-ENTRYPOINT ["java", "-jar", "app.jar"]
+EXPOSE 5000
+
+CMD ["node", "dist/server.js"]
